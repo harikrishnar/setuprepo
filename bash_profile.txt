@@ -1,10 +1,10 @@
 # Prompt
-export PS1='\w\$ '
+# export PS1='\w\$ '
 
-if [[ -s /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]]; then
-  source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
-  export PS1='\w\$$(__git_ps1) '
-fi
+# if [[ -s /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]]; then
+#   source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+#   export PS1='\w\$$(__git_ps1) '
+# fi
 
 # Paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/hari/Library/Developer/android-ndk-r10d:/Applications/adt-bundle/android-sdk-macosx/platform-tools:/usr/local/apache-ant-1.9.4/bin
@@ -44,6 +44,10 @@ alias la='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias doc="cd ~/Documents"
+alias h="history"
 
 # Portable ls with colors
 if ls --color -d . >/dev/null 2>&1; then
@@ -51,6 +55,16 @@ if ls --color -d . >/dev/null 2>&1; then
 elif ls -G -d . >/dev/null 2>&1; then
   alias ls='ls -G'  # BSD/OS X
 fi
+
+# IP addresses
+alias localip="ipconfig getifaddr en0"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Ruby
 alias be='bundle exec'
@@ -174,5 +188,6 @@ function ghalo {
   guser halo $(echo "Z2l0aHViQHBvc3Rlby5vcmc=" | openssl enc -d -base64)
 }
 
+source $HOME/.bash_prompt
 # Local bin directory takes highest precedence
 # export PATH="bin:$PATH"

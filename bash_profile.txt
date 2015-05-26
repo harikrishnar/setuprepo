@@ -156,7 +156,8 @@ alias gdc="git diff --cached"  # What's added but not yet committed?
 alias gdcm="git diff --cached | subl"
 alias gdm="git diff | subl"
 alias gg='git grep'
-alias gl="git pull --rebase"
+alias glr="git pull --rebase"
+alias gl="git pull"
 alias gm='git merge'
 alias gp='git push'
 alias gpp='git pull --rebase && git push'
@@ -164,6 +165,8 @@ alias gr='git remote show origin'
 alias gs="git status"
 alias gt='git tag'
 alias gu='git unstage'
+alias glo="git pull origin"
+alias gpo="git push origin"
 
 if [[ -s /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]]; then
   source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash

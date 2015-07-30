@@ -1,0 +1,3 @@
+## enable Alt-ackward-word
+"\e\e[D": backward-word
+"\e\e[C": forward-word

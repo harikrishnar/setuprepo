@@ -1,0 +1,127 @@
+# Shell
+alias reload='(source $HOME/.bash_profile && echo "sourced $HOME/.bash_profile") || echo "Could not source $HOME/.bash_profile"'
+alias la='ls -lah'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias doc="cd ~/Documents"
+alias h="history"
+
+# Portable ls with colors
+if ls --color -d . >/dev/null 2>&1; then
+  alias ls='ls --color=auto'  # Linux
+elif ls -G -d . >/dev/null 2>&1; then
+  alias ls='ls -G'  # BSD/OS X
+fi
+
+# IP addresses
+alias localip="ipconfig getifaddr en0"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Ruby
+alias be='bundle exec'
+
+# Rails
+#alias r='rails'
+alias tdev='tail -n 90 -f log/development.log'
+alias ttest='tail -n 90 -f log/test.log'
+#alias g='be guard'
+alias rst='touch tmp/restart.txt && echo touched tmp/restart.txt'
+
+# Applications
+function m {
+  if [ -z "$1" ]
+  then
+    subl .
+  else
+    subl $1
+  fi
+}
+
+function o {
+  if [ -z "$1" ]
+  then
+    gnome-open .
+  else
+    gnome-open $1
+  fi
+}
+
+function repeat {
+  while sleep 2; do
+    $@
+  done
+}
+
+# System
+alias hosts='sudo subl /etc/hosts'
+alias sshconf='subl ~/.ssh/config'
+alias keys="open ~/.ssh"
+alias online="ping -c 1 www.google.com &> /dev/null && echo 'Online :)' || echo 'Offline :('"
+alias gogo="~/.biosphere/spheres/halo/go/bin/go-google-authenticator"
+
+function sshkey {
+  if [ -z "$1" ]
+  then
+    echo "USAGE: sshkey mykeyname"
+  else
+    ssh-keygen -t rsa -N '' -f ~/.ssh/$1
+    cat ~/.ssh/$1.pub | pbcopy
+    echo
+    echo "Generated key ~/.ssh/$1 and copied the public key to the clipboard."
+    echo
+  fi
+}
+
+
+# Projects
+alias cg="cd /Users/hari/Documents/Work/cricketgold"
+alias cga="cd /Users/hari/Documents/Work/cricketgold/frameworks/runtime-src/proj.android/"
+alias cgc="cd /Users/hari/Documents/Work/cricketgold/frameworks/cocos2d-x/"
+alias tpw="cd /Users/hari/Documents/Work/teenpattiweb"
+alias tpg="cd /Users/hari/Documents/cocos2d-x-2.1.5/projects/teenpatti"
+
+# Git
+alias ga='git add'
+alias gaa='git add --all'
+alias gam="git commit --amend"
+alias gb="git branch"
+alias gc="git commit -v"
+alias gco="git checkout"
+alias gcp="git cherry-pick"
+alias gd="git diff"  # What's changed but not yet added?
+alias gdc="git diff --cached"  # What's added but not yet committed?
+alias gdcm="git diff --cached | subl"
+alias gdm="git diff | subl"
+alias gdf='git diff --name-only'
+alias gg='git grep'
+alias glo="git pull --rebase origin"
+alias glom="git pull --rebase origin master"
+alias gl="git pull"
+alias gm='git merge'
+alias gsh='git stash'
+alias gr='git reset'
+alias gp='git push'
+alias gpp='git pull --rebase && git push'
+alias grso='git remote show origin'
+alias gs="git status"
+alias gsi="git status --ignored"
+alias gt='git tag'
+alias gu='git unstage'
+alias gci="git check-ignore -v **/*"
+alias glog='git log'
+alias gf='git fetch'
+alias gpm="git pull origin"
+alias gpo="git push origin"
+alias gpom="git push origin master"
+
+# android
+alias apk="adb install -r"

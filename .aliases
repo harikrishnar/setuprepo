@@ -37,7 +37,7 @@ alias ttest='tail -n 90 -f log/test.log'
 alias rst='touch tmp/restart.txt && echo touched tmp/restart.txt'
 
 # Applications
-function m {
+function e {
   if [ -z "$1" ]
   then
     subl .
